@@ -1,0 +1,14 @@
+{
+  "name": "crud-js",
+  "version": "1.0.0",
+  "description": "A CRUD CLI tool written in Javascript that connects to MySQL databases.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "crud"
+  ],
+  "author": "PedroHBrasil",
+  "license": "MIT"
+}
