@@ -6,14 +6,19 @@ const dotenv = require('dotenv').config();
 class DbConnector {
 
     con;
-    conProps;
+    conProps = {
+        host: "",
+        user: "",
+        password: "",
+        database: "",
+    };
 
     constructor() {
         this.#readConProps();
         this.con = mysql.createConnection(this.conProps);
     }
 
-    #readConProps = () => {
+    #readConProps() {
         console.info("Reading database connection properties.");
         this.conProps = {
             host: process.env.DB_HOST,
@@ -27,7 +32,7 @@ class DbConnector {
         console.log(`\tDatabase name: ${this.conProps.database}`);
     }
 
-    openConnection = () => {
+    openConnection() {
         console.log("Opening connection to database.");
         this.con.connect((err) => {
             if (err) {
@@ -36,9 +41,9 @@ class DbConnector {
             }
             console.log("Connected to database.")
         });
-    };
+    }
 
-    closeConnection = () => {
+    closeConnection() {
         console.log("Closing connection to database.");
         this.con.end((err) => {
             if (err) {
@@ -47,7 +52,7 @@ class DbConnector {
             }
             console.log("Connection closed.")
         });
-    };
+    }
 }
 
 module.exports = {
